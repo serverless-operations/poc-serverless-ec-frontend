@@ -8,10 +8,9 @@ export interface IApp {
     enabled: boolean,
     message: string
   },
-  confirmDialog: {
+  resultDialog: {
     enabled: boolean,
-    status: string
-    message: string
+    data: any
   },
   errorMessageCard: {
     enabled: boolean,
@@ -30,10 +29,9 @@ export default class App extends VuexModule implements IApp {
     enabled: false,
     message: ''
   }
-  public confirmDialog = {
+  public resultDialog = {
     enabled: false,
-    status: '',
-    message: ''
+    data: {}
   }
   public errorMessageCard = {
     enabled: false,
@@ -58,15 +56,15 @@ export default class App extends VuexModule implements IApp {
   }
 
   @Mutation
-  public onConfirmDialog(params: { status: 'success' | 'failed', msg: string }) {
-    this.confirmDialog.enabled = true
-    this.confirmDialog.status = params.status
-    this.confirmDialog.message = params.msg
+  public onResultDialog(data: any) {
+    this.resultDialog.enabled = true
+    this.resultDialog.data = data
   }
 
   @Mutation
-  public offConfirmDialog() {
-    this.confirmDialog.enabled = false
+  public offResultDialog() {
+    this.resultDialog.enabled = false
+    this.resultDialog.data = {}
   }
 
   @Mutation

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main :class="isMobileBreakpoint ? 'wrap-main-mobile' : 'wrap-main-pc'">
+    <v-main class="wrap-main">
       <v-container fill-height>
         <v-row justify="center">
           <nuxt />
@@ -22,7 +22,7 @@
       <br>
       <span>{{ pageLoadingText }}</span>
     </v-overlay>
-    <confirm-dialog />
+    <result-dialog />
   </v-app>
 </template>
 
@@ -30,12 +30,12 @@
 <script lang="ts">
 import mixins from 'vue-typed-mixins'
 import { Common } from '~/mixins'
-import ConfirmDialog from '~/components/ConfirmDialog.vue'
+import ResultDialog from '~/components/ResultDialog.vue'
 import { app } from '~/store'
 
 export default mixins(Common).extend({
   components: {
-    ConfirmDialog
+    ResultDialog
   },
   computed: {
     isPageLoading() {
@@ -44,33 +44,14 @@ export default mixins(Common).extend({
     pageLoadingText() {
       return app.pageLoading.message
     }
-    //
-  },
-  created() {
-    //
-  },
-  methods: {
-    //
   }
 })
 </script>
 
 
 <style scoped lang="scss">
-%wrap-main {
-  // background-color: rgba(255,255,255,0.8);
-  // background-blend-mode: lighten;
+.wrap-main {
   height: 100vh;
-  // background-size: cover;
-  // background-attachment: fixed;
-}
-.wrap-main-pc {
-  @extend %wrap-main;
-  // background-image: url('../assets/img/page_bg_pc.jpg');
 }
 
-.wrap-main-mobile {
-  @extend %wrap-main;
-  // background-image: url('../assets/img/page_bg_mobile.jpg');
-}
 </style>
