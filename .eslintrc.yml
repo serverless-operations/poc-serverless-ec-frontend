@@ -1,0 +1,31 @@
+env:
+  browser: true
+  node: true
+  es6: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:jest/recommended'
+  - 'plugin:vue/recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:@typescript-eslint/eslint-recommended'
+parser: vue-eslint-parser
+parserOptions:
+  parser: '@typescript-eslint/parser'
+  tsconfigRootDir: ./
+  sourceType: module
+  
+rules:
+  # Requires the use of single quotes for string literals
+  quotes:
+    - error
+    - single
+  jest/no-jasmine-globals: off
+
+  '@typescript-eslint/camelcase': off
+  '@typescript-eslint/no-non-null-assertion': off
+  '@typescript-eslint/ban-ts-ignore': off
+  '@typescript-eslint/interface-name-prefix': off
+  '@typescript-eslint/member-delimiter-style': off
+
+  # Allows to omit a return type
+  '@typescript-eslint/explicit-function-return-type': off
