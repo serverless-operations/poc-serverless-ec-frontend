@@ -104,7 +104,10 @@ export default mixins(Common).extend({
           console.log('## On next subscription data', data)
           app.onResultDialog((data as any).data.onGetResult)
         },
-        error: err => console.error('Subscription failed', err)
+        error: err => {
+          app.onResultDialog({ id: this.userId, status: 'FAILURE' })
+          console.error('## Subscription failed', err)
+        }
       })
 
       console.log('## Got subscription observer', observer)
