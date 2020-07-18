@@ -64,7 +64,7 @@ export default mixins(Common).extend({
     }
   },
   async mounted() {
-    console.debug('## Mounted.')
+    console.log('## Mounted.')
 
     this.userId = this.$route.query.user_id as string || 'test-user-id'
 
@@ -76,9 +76,9 @@ export default mixins(Common).extend({
     const idToken = bearerToken.substring(constants.BEARER_PREFIX.length)
     app.setIdToken(idToken)
     this.$apolloHelpers.onLogin(idToken)
-    console.debug('## ID Token: ', idToken)
+    console.log('## ID Token: ', idToken)
 
-    console.debug('## Creating subscription observer...')
+    console.log('## Creating subscription observer...')
     const observer = await this.$apollo.getClient().subscribe({
       query: ON_GET_RESULT_SUBSCRIPTION,
       variables: {
@@ -88,11 +88,11 @@ export default mixins(Common).extend({
       next: data => this.subscriptionData = data,
       error: err => this.subscriptionData = err
     })
-    console.debug('## Got subscription observer', observer)
+    console.log('## Got subscription observer', observer)
   },
   methods: {
     async pay() {
-      console.debug('## Creating payment...')
+      console.log('## Creating payment...')
       const payment = await this.$apollo.getClient().mutate({
         mutation: CREATE_PAYMENT, variables: {
           input: {
@@ -102,7 +102,7 @@ export default mixins(Common).extend({
           }
         }
       })
-      console.debug('## Payment created. result:', payment)
+      console.log('## Payment created. result:', payment)
       this.payment = payment
     }
   },
