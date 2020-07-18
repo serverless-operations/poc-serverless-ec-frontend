@@ -20,6 +20,7 @@ AUTH0_CLIENT_ID=
 ```
 
 ## 動作確認
-1. `https://localhost:3000/` 「サインイン」ボタンを押す
-（Auth0画面遷移 → callback で戻る）
-2. `https://localhost:3000/main` 「購入する」ボタンを押す
+1. `yarn dev` コマンドを実行してローカルでアプリを起動する  
+2. `https://localhost:3000/` 「サインイン」ボタンを押す  
+（Auth0画面遷移 → callback で戻る）  
+3. `https://localhost:3000/main` 「購入する」ボタンを押す  
