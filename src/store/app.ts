@@ -10,7 +10,8 @@ export interface IApp {
   },
   resultDialog: {
     enabled: boolean,
-    data: any
+    message: string
+    data: any,
   },
   errorMessageCard: {
     enabled: boolean,
@@ -31,6 +32,7 @@ export default class App extends VuexModule implements IApp {
   }
   public resultDialog = {
     enabled: false,
+    message: '',
     data: {}
   }
   public errorMessageCard = {

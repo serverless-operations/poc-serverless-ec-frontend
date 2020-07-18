@@ -16,7 +16,9 @@
       <v-card-text>
         <v-row class="pl-6">
           <v-col cols="3">
-            <v-subheader>User ID</v-subheader>
+            <v-subheader class="caption">
+              User ID
+            </v-subheader>
           </v-col>
           <v-col
             cols="9"
@@ -27,7 +29,9 @@
         </v-row>
         <v-row class="mt-n6 pl-6">
           <v-col cols="3">
-            <v-subheader>Status</v-subheader>
+            <v-subheader class="caption">
+              Status
+            </v-subheader>
           </v-col>
           <v-col
             cols="9"
@@ -41,6 +45,19 @@
               :size="30"
               color="primary"
             />
+          </v-col>
+        </v-row>
+        <v-row class="mt-n6 pl-6">
+          <v-col cols="3">
+            <v-subheader class="caption">
+              Message
+            </v-subheader>
+          </v-col>
+          <v-col
+            cols="9"
+            class="my-auto"
+          >
+            {{ data.message || '購入結果の通知を待っています...' }}
           </v-col>
         </v-row>
       </v-card-text>

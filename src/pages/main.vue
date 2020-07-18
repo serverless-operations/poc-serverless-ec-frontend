@@ -102,14 +102,21 @@ export default mixins(Common).extend({
       }).subscribe({
         next: data => {
           console.log('## On next subscription data', data)
-          app.onResultDialog((data as any).data.onGetResult)
+          const result = (data as any).data.onGetResult
+          app.onResultDialog({
+            ...result,
+            message: '購入完了しました'
+          })
         },
         error: err => {
-          app.onResultDialog({ id: this.userId, status: 'FAILURE' })
+          app.onResultDialog({
+            id: this.userId,
+            status: 'FAILURE',
+            message: '購入処理に失敗しました'
+          })
           console.error('## Subscription failed', err)
         }
       })
-
       console.log('## Got subscription observer', observer)
     },
 
